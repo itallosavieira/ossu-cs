@@ -1,12 +1,12 @@
-normal_hours = 40
+regular_hours = 40
 hours = float(input('Entern hours: '))
 rate = float(input('Entern rate: '))
 
 
-if hours > normal_hours:
-    extra_hours = hours % normal_hours
+if hours > regular_hours:
+    extra_hours = hours % regular_hours
     bonus_rate = rate * 1.5
-    pay = (normal_hours * rate) + (extra_hours * bonus_rate)
+    pay = (regular_hours * rate) + (extra_hours * bonus_rate)
 
 else:
     pay = hours * rate
