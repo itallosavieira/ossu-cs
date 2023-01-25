@@ -5,3 +5,4 @@ My projects and notes for ossu computer science curriculum.
 
 Current course:
 - [ ] [Python for Everybody (PY4E)](https://www.py4e.com/lessons)
+- [ ] [Intro to Computer Science and Programming Using Python (MIT)](https://learning.edx.org/course/course-v1:MITx+6.00.1x+1T2023/home)
