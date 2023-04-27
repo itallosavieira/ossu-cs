@@ -7,7 +7,7 @@
 # you realize you are going to have to save for several years before you can afford to make the down
 # payment on a house. In Part A, we are going to determine how long it will take you to save enough
 # money to make the down payment given the following assumptions:
-    
+
 # 1. Call the cost of your dream home total_cost.
 # 2. Call the portion of the cost needed for a down payment portion_down_payment. For
 # simplicity, assume that portion_down_payment = 0.25 (25%).
@@ -34,7 +34,7 @@
 # Hints
 # To help you get started, here is a rough outline of the stages you should probably follow in writing your
 # code:
-    
+
 # ● Retrieve user input. Look at input() if you need help with getting user input. For this problem set,
 # you can assume that users will enter valid input (e.g. they won’t enter a string when you expect
 # an int)
@@ -59,61 +59,64 @@
 # Number of months: 105
 # >>>
 
+def calculateMonthlyPortion(value):
+    return value / 12
+
+def calculateMonthlySavingsRate(current_savings, monthly_rate):
+    return current_savings * monthly_rate
+
+def calculateCurrentSavings(current_savings, monthly_savings, monthly_rate):
+    return monthly_savings + calculateMonthlySavingsRate(current_savings, monthly_rate)
+    
+
+class DownPaymentPlanner:
+
+    def __init__(self, annual_salary, portion_saved, total_cost, portion_down_payment):
+
+        self.annual_salary = annual_salary
+        self.portion_saved = portion_saved
+        self.total_cost = total_cost
+        self.portion_down_payment = portion_down_payment
+
+    def getAnnualSalary(self):
+        return self.annual_salary
+
+    def getPortionSaved(self):
+        return self.portion_saved
+
+    def getTotalCost(self):
+        return self.total_cost
+
+    def getDownPaymentPortion(self):
+        return self.portion_down_payment
+
+    def calculateDownPaymentValue(self):
+        return self.getTotalCost() * self.getDownPaymentPortion()
+
+    def calculateMonthlySavedValue(self):
+        return calculateMonthlyPortion(self.getAnnualSalary()) * self.getPortionSaved()
+
+
 annual_salary = float(input("Enter your annual salary:"))
 portion_saved = float(input("Enter the percent of your salary to save, as a decimal:"))
 total_cost = float(input("Enter the cost of your dream home:"))
 
-annual_investments_rate = 0.04
-monthly_investments_rate = annual_investments_rate / 12
-
 portion_down_payment = 0.25
 
-total_down_payment = total_cost * portion_down_payment
+annual_rate = 0.04
+monthly_rate = calculateMonthlyPortion(annual_rate)
 
-monthly_salary = annual_salary / 12
-
-monthly_salary_saving = monthly_salary * portion_saved
+dpp = DownPaymentPlanner(
+    annual_salary,
+    portion_saved,
+    total_cost,
+    portion_down_payment)
 
 current_savings = 0
 total_months = 0
 
-while(current_savings < total_down_payment):
-    current_savings = current_savings + monthly_salary_saving + (current_savings * monthly_investments_rate)
-    total_months = total_months + 1
-    
+while(current_savings < dpp.calculateDownPaymentValue()):
+    current_savings += calculateCurrentSavings(current_savings, dpp.calculateMonthlySavedValue(), monthly_rate)
+    total_months +=  1
+
 print("Number of months:", total_months)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
