@@ -1,3 +1,4 @@
+
 # Test Case 1
 # >>>
 # Enter your starting annual salary: 120000
@@ -23,6 +24,7 @@
 # Number of months: 261
 # >>>
 
+
 def calculateMonthlyPortion(value):
     return value / 12
 
@@ -47,9 +49,7 @@ def getUserData():
     total_cost = float( \
         input("Enter the cost of your dream home: "))
     
-    semi_annual_raise = float( \
-        input("Enter the semiannual raise, as a decimal: "))
-        
+    semi_annual_raise = 0.05
     portion_down_payment = 0.25
     annual_rate = 0.04
     monthly_rate = calculateMonthlyPortion(annual_rate)
